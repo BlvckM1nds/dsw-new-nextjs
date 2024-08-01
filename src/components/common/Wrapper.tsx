@@ -1,4 +1,4 @@
-import { WrapperProps } from "../../lib/types";
+import { WrapperProps } from "@/lib/types";
 
 export default function Wrapper({ children, ...props }: WrapperProps) {
   return (

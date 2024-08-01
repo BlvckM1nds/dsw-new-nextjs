@@ -2,8 +2,7 @@ import Link from "next/link";
 import { FaClock, FaInstagram, FaMapPin, FaWhatsapp } from "react-icons/fa";
 import { MdMenuBook } from "react-icons/md";
 
-import { Hyperlink, SocialMedia } from "../../lib/types";
-
+import { Hyperlink, SocialMedia } from "@/lib/types";
 import logoDapoerSariwangi from "../../assets/logo-dsw.png";
 
 const socialMedia: SocialMedia[] = [
