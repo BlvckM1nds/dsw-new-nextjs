@@ -1,3 +1,5 @@
+"use server";
+
 import { type NextRequest, NextResponse } from "next/server";
 import { ResponseData } from "@/lib/interfaces";
 import { encryptUtils } from "@/utils/encrypt";

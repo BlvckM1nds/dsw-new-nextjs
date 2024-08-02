@@ -1,3 +1,5 @@
+"use server";
+
 import { NextResponse } from "next/server";
 import { ResponseData } from "@/lib/interfaces";
 import { userServices } from "@/services/user.service";
