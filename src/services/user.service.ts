@@ -20,7 +20,7 @@ class UserService {
     return prisma.user.create({
       data: {
         ...payload,
-        id: nanoid(16)
+        id: 'UDS-' + nanoid(8)
       }
     });
   };

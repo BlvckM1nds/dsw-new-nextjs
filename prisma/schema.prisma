@@ -16,8 +16,9 @@ model User {
   firstName    String
   lastName     String?
   phone        String   @unique
+  role         Role     @default(CUSTOMER)
   createdAt    DateTime @default(now())
-  lastModified DateTime @default(now())
+  lastModified DateTime @updatedAt
 
   @@map("users")
 }
@@ -38,6 +39,7 @@ model Item {
   categoryId  String
   name        String
   description String?
+  available   Boolean  @default(true)
   category    Category @relation(fields: [categoryId], references: [id], name: "ItemVariants")
   prices      Price[]  @relation("ItemPrices")
 
@@ -46,11 +48,21 @@ model Item {
 
 model Price {
   // example ID: PRC-21jid189
-  id      String @id @db.VarChar(12)
+  id      String  @id @db.VarChar(12)
   itemId  String
-  context String
-  price   Int
-  item    Item   @relation(fields: [itemId], references: [id], name: "ItemPrices")
+  context Context @default(DINEIN)
+  price   Float
+  item    Item    @relation(fields: [itemId], references: [id], name: "ItemPrices")
 
   @@map("prices")
+}
+
+enum Role {
+  ADMIN
+  CUSTOMER
+}
+
+enum Context {
+  DINEIN
+  CATERING
 }

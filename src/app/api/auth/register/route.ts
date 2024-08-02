@@ -17,11 +17,12 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
       password: hashedPassword
     };
 
-    await userServices.createNewUser(payload);
+    const user = await userServices.createNewUser(payload);
 
     return NextResponse.json<ResponseData>({
       success: true,
-      message: 'New user created successfully'
+      message: 'New user created successfully',
+      data: user
     }, { status: 201 });
   } catch (error) {
     return NextResponse.json({
