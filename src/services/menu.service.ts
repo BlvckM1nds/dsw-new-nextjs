@@ -5,7 +5,11 @@ const prisma = new PrismaClient();
 
 class MenuService {
   async getCategories(): Promise<Category[]> {
-    return prisma.category.findMany();
+    return prisma.category.findMany({
+      orderBy: {
+        name: "asc"
+      }
+    });
   };
 
   async getMenuWithPrices(): Promise<Category[]> {
@@ -16,6 +20,9 @@ class MenuService {
             prices: true
           }
         }
+      },
+      orderBy: {
+        name: "asc"
       }
     });
   };

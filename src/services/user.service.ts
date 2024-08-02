@@ -5,7 +5,11 @@ const prisma = new PrismaClient();
 
 class UserService {
   async getAllUsers(): Promise<User[]> {
-    return prisma.user.findMany();
+    return prisma.user.findMany({
+      orderBy: {
+        createdAt: "desc"
+      }
+    });
   };
 
   async getUserByEmail(email: string): Promise<User | null> {
