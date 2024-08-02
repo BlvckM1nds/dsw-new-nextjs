@@ -22,7 +22,7 @@ export async function GET(): Promise<NextResponse> {
       data: users
     }, { status: 200 });
   } catch (error) {
-    return NextResponse.json({
+    return NextResponse.json<ResponseData>({
       success: false,
       message: 'Internal server error',
       error: error

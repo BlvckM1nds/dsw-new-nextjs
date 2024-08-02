@@ -49,5 +49,5 @@ export interface ResponseData<T = any> {
   success: boolean
   message: string
   data?: T
-  error?: string
+  error?: T
 };

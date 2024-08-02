@@ -38,7 +38,7 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
       message: 'Logged in'
     }, { status: 200 });
   } catch (error) {
-    return NextResponse.json({
+    return NextResponse.json<ResponseData>({
       success: false,
       message: 'Internal server error',
       error: error

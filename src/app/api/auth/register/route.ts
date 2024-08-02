@@ -19,7 +19,7 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
       password: hashedPassword
     };
 
-    const user = await userServices.createNewUser(payload);
+    const user: User = await userServices.createNewUser(payload);
 
     return NextResponse.json<ResponseData>({
       success: true,
@@ -27,7 +27,7 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
       data: user
     }, { status: 201 });
   } catch (error) {
-    return NextResponse.json({
+    return NextResponse.json<ResponseData>({
       success: false,
       message: 'Internal server error',
       error: error
