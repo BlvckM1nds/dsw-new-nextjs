@@ -1,0 +1,56 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("POSTGRES_PRISMA_URL") // uses connection pooling
+  directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
+}
+
+model User {
+  // example ID: UDS-wd9a01dk
+  id           String   @id @db.VarChar(16)
+  email        String   @unique
+  password     String
+  firstName    String
+  lastName     String?
+  phone        String   @unique
+  createdAt    DateTime @default(now())
+  lastModified DateTime @default(now())
+
+  @@map("users")
+}
+
+model Category {
+  // example ID: CAT-12sjc8ky
+  id          String  @id @db.VarChar(12)
+  name        String
+  description String?
+  items       Item[]  @relation("ItemVariants")
+
+  @@map("categories")
+}
+
+model Item {
+  // example ID: VAR-12sjc8ky
+  id          String   @id @db.VarChar(12)
+  categoryId  String
+  name        String
+  description String?
+  category    Category @relation(fields: [categoryId], references: [id], name: "ItemVariants")
+  prices      Price[]  @relation("ItemPrices")
+
+  @@map("items")
+}
+
+model Price {
+  // example ID: PRC-21jid189
+  id      String @id @db.VarChar(12)
+  itemId  String
+  context String
+  price   Int
+  item    Item   @relation(fields: [itemId], references: [id], name: "ItemPrices")
+
+  @@map("prices")
+}

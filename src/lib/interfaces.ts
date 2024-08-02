@@ -43,4 +43,11 @@ export interface VIPRoom {
   title: string
   capacity: number
   minOrder: number
-}
+};
+
+export interface ResponseData<T = any> {
+  success: boolean
+  message: string
+  data?: T
+  error?: string
+};
