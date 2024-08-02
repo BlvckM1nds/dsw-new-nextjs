@@ -3,7 +3,7 @@
 import { useState } from "react";
 
 import { currencyConversion } from "@/utils/formatter";
-import { VIPRoom } from "@/lib/types";
+import { VIPRoom } from "@/lib/interfaces";
 import Wrapper from "../common/Wrapper";
 import Container from "../common/Container";
 import { Button } from "../ui/button";

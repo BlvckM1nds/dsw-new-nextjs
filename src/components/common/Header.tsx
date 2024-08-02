@@ -1,7 +1,7 @@
 import { Fragment } from "react";
 import Link from "next/link";
 
-import { Hyperlink } from "@/lib/types";
+import { Hyperlink } from "@/lib/interfaces";
 
 export default function Header({ scrolled, menuList }: { scrolled: boolean, menuList: Hyperlink[] }) {
   return (

@@ -8,7 +8,7 @@ import {
   SheetTrigger,
   SheetHeader
 } from "../ui/sheet";
-import { Hyperlink } from "@/lib/types";
+import { Hyperlink } from "@/lib/interfaces";
 import logoDapoerSariwangi from "../../assets/logo-dsw.png";
 
 export default function Sidebar({ scrolled, menuList }: { scrolled: boolean, menuList: Hyperlink[] }) {

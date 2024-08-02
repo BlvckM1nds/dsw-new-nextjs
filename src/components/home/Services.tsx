@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { FaBowlFood } from "react-icons/fa6";
 
-import { Service } from "@/lib/types";
+import { Service } from "@/lib/interfaces";
 import Wrapper from "../common/Wrapper";
 import Container from "../common/Container";
 import { Button } from "../ui/button";

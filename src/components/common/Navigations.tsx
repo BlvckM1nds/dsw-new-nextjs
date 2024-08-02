@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
-import { Hyperlink } from "@/lib/types";
+import { Hyperlink } from "@/lib/interfaces";
 import Header from "./Header";
 import Sidebar from "./Sidebar";
 import logoDapoerSariwangi from "../../assets/logo-dsw.png";

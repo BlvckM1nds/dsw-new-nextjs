@@ -5,7 +5,7 @@ import { BsClock } from "react-icons/bs";
 
 import { Carousel, CarouselContent, CarouselItem, type CarouselApi } from "../ui/carousel";
 import { formatLongDate } from "@/utils/formatter";
-import { Promo } from "@/lib/types";
+import { Promo } from "@/lib/interfaces";
 import Wrapper from "../common/Wrapper";
 import { Button } from "../ui/button";
 import sampleBg from "../../assets/cooks-bw.jpg";
