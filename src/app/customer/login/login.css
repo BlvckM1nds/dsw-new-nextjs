@@ -1,0 +1,25 @@
+.bg-custom {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+}
+
+.bg-custom::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("../../../assets/gurame-bakar.png");
+  background-size: cover;
+  background-position: center;
+  opacity: .75;
+  z-index: -1;
+}
+
+@media (min-width: 960px) {
+  .bg-custom::before {
+    background-image: none;
+  }
+}

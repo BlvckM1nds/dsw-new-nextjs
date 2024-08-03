@@ -1,5 +1,6 @@
-import { Fragment } from "react";
 import Link from "next/link";
+import Image from "next/image";
+import { Fragment } from "react";
 import { RiMenu3Fill } from "react-icons/ri";
 
 import {
@@ -21,10 +22,10 @@ export default function Sidebar({ scrolled, menuList }: { scrolled: boolean, men
         <SheetContent className="flex flex-col items-center justify-center gap-16">
           <SheetHeader>
             <Link href="/" className="block h-14">
-              <img
-                src={logoDapoerSariwangi.src}
+              <Image
+                src={logoDapoerSariwangi}
                 alt="Dapoer Sariwangi"
-                className="h-full"
+                className="h-full w-fit"
               />
             </Link>
           </SheetHeader>

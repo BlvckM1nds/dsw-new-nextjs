@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { BsClock } from "react-icons/bs";
 
@@ -76,10 +77,12 @@ export default function Promotions() {
             {promos?.map((promo: Promo, index: number) => (
               <CarouselItem key={index}>
                 <div className="px-8 md:p-0">
-                  <img
+                  <Image
                     src={promo.visual}
                     alt="Visual"
-                    className="w-full transition-all duration-300 group-hover:md:scale-105"
+                    width={1000}
+                    height={1000}
+                    className="transition-all duration-300 group-hover:md:scale-105"
                   />
                 </div>
               </CarouselItem>

@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 import { Button } from "@/components/ui/button";
 import { Hyperlink } from "@/lib/interfaces";
@@ -19,7 +20,6 @@ const links: Hyperlink[] = [
 
 export default function Navigations() {
   const [scrolled, setScrolled] = useState<boolean>(false);
-  const [isOpen, setIsOpen] = useState<boolean>(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -36,11 +36,11 @@ export default function Navigations() {
   return (
     <header className={`py-3 fixed top-0 w-full group transition-all duration-300 ${scrolled ? "bg-white shadow-lg" : "lg:py-6 bg-transparent"} hover:lg:bg-white z-[990]`}>
       <nav className="container mx-auto flex items-center justify-between">
-        <Link href="/" className="block h-10 lg:h-12 lg:block">
-          <img
-            src={logoDapoerSariwangi.src}
+        <Link href="/" className="block h-10 lg:h-12">
+          <Image
+            src={logoDapoerSariwangi}
             alt="Dapoer Sariwangi"
-            className="h-full"
+            className="h-full w-fit"
           />
         </Link>
         {/* Desktop Profile */}

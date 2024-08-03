@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { FaClock, FaInstagram, FaMapPin, FaWhatsapp } from "react-icons/fa";
 import { MdMenuBook } from "react-icons/md";
 
@@ -38,8 +39,8 @@ export default function Footer() {
         <div className="footer-content flex flex-col gap-y-6 px-4 lg:gap-0 lg:flex-row lg:items-start lg:justify-between">
           <aside className="company-info flex items-center">
             <figure className="dsw-logo hidden lg:block pr-7 mr-7 border-r border-accent">
-              <img
-                src={logoDapoerSariwangi.src}
+              <Image
+                src={logoDapoerSariwangi}
                 alt="Dapoer Sariwangi"
                 className="w-28"
               />

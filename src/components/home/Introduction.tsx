@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 import Wrapper from "../common/Wrapper";
 import { Button } from "../ui/button";
 import sampleImage from "../../assets/vegetables.jpg";
@@ -14,7 +16,7 @@ export default function Introduction() {
             <Button>Tentang Kami</Button>
           </div>
           <figure className="flex-1" style={{ filter: "drop-shadow(0px 0px 24px rgba(0, 0, 0, 0.5))" }}>
-            <img src={sampleImage.src} alt="Menu Dapoer Sariwangi" />
+            <Image src={sampleImage} alt="Menu Dapoer Sariwangi" />
           </figure>
         </div>
       </div>

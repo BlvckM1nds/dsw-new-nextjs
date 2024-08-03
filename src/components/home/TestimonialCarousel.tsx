@@ -4,6 +4,7 @@ import {
   CarouselItem
 } from "../ui/carousel";
 import { FaStar } from "react-icons/fa6";
+import Image from "next/image";
 
 import sampleProfile from "@/assets/ryu-alvano.jpg";
 
@@ -22,7 +23,11 @@ export default function TestimonialCarousel() {
             <div className="bg-white p-8 md:p-10 space-y-6 rounded-lg">
               {/* Profile */}
               <div className="flex items-center gap-4">
-                <img src={sampleProfile.src} alt="Profile" className="h-12" />
+                <Image
+                  src={sampleProfile}
+                  alt="Profile"
+                  className="h-12 w-fit"
+                />
                 <div>
                   <h5 className="font-bold text-lg text-primary">John Doe</h5>
                   <p className="text-primary">Jakarta Utara, Indonesia</p>

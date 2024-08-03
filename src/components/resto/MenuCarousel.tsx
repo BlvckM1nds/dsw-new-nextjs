@@ -1,3 +1,4 @@
+import Image from "next/image";
 import {
   Carousel,
   CarouselContent,
@@ -22,8 +23,8 @@ export default function MenuCarousel() {
           >
             <div className="text-center bg-white rounded-lg overflow-hidden duration-300 group">
               <div className="w-full aspect-square overflow-hidden">
-                <img
-                  src={sampleImage.src}
+                <Image
+                  src={sampleImage}
                   alt="Menu DSW"
                   className="w-full transition-all duration-300 group-hover:scale-105"
                 />

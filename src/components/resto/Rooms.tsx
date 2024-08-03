@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 
 import { currencyConversion } from "@/utils/formatter";
 import { VIPRoom } from "@/lib/interfaces";
@@ -50,7 +51,11 @@ export default function Rooms() {
               onClick={() => setHoverIndex(index)}
             >
               <figure className={`h-full aspect-[3/4] xl:aspect-square ${hoverIndex !== index && "opacity-50"} group-hover:opacity-100 text-center duration-500`}>
-                <img className="h-full object-cover" src={room.photo.src} alt="room" />
+                <Image
+                  className="h-full object-cover"
+                  src={room.photo}
+                  alt="room"
+                />
               </figure>
               <div className={`p-6 xl:p-10 w-full duration-500 ${hoverIndex === index ? "opacity-100 delay-500" : "opacity-0"}`}>
                 <h3 className="text-2xl xl:text-3xl text-primary font-bold mb-2 xl:mb-3">{room.title}</h3>
@@ -84,8 +89,8 @@ export default function Rooms() {
               className="flex flex-col sm:flex-row items-center bg-white rounded-lg overflow-hidden duration-300 group"
             >
               <figure className="w-full sm:w-1/2 aspect-square overflow-hidden">
-                <img
-                  src={sampleImg.src}
+                <Image
+                  src={sampleImg}
                   alt="Ruang DSW"
                   className="w-full h-full object-cover"
                 />
