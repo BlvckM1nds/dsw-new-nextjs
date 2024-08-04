@@ -6,7 +6,7 @@ import { z } from "zod";
 import Image from "next/image";
 import logoDsw from "@/assets/logo-dsw.png";
 import bgLogin from "@/assets/gurame-bakar.png";
-import "./login.css";
+import "../halfside.css";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -18,6 +18,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import Wrapper from "@/components/common/Wrapper";
+import Link from "next/link";
 
 const formSchema = z.object({
   email: z.string().email(),
@@ -38,11 +39,11 @@ export default function Login() {
   };
 
   return (
-    <Wrapper id="login" className="h-screen w-screen flex">
+    <Wrapper id="login" className="h-screen w-screen overflow-hidden flex">
       {/* Login Form */}
       <Form {...form}>
         <div className="bg-custom flex-1 flex items-center justify-center">
-          <form onSubmit={form.handleSubmit(onSubmit)} className="min-w-60 max-w-[480px] p-6 lg:p-10 mx-4 bg-white shadow-xl rounded-lg space-y-6 lg:space-y-8 border">
+          <form onSubmit={form.handleSubmit(onSubmit)} className="min-w-60 max-w-[480px] min-h-96 max-h-[640px] overflow-y-scroll p-6 lg:p-10 mx-4 bg-white shadow-xl rounded-lg space-y-6 lg:space-y-8 border">
             <Image
               src={logoDsw}
               alt="Dapoer Sariwangi"
@@ -59,7 +60,7 @@ export default function Login() {
                 name="email"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Email</FormLabel>
+                    <FormLabel>Email Address</FormLabel>
                     <FormControl>
                       <Input {...field} type="email" placeholder="someone@example.com" />
                     </FormControl>
@@ -80,6 +81,7 @@ export default function Login() {
               />
             </div>
             <Button type="submit" className="w-full">Login</Button>
+            <p className="text-sm text-center">Not a member? <Link href='/customer/register' className="font-semibold hover:underline">Sign up here</Link>.</p>
           </form>
         </div>
       </Form>

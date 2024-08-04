@@ -11,11 +11,13 @@ datasource db {
 model User {
   // example ID: UDS-wd9a01dk
   id           String   @id @db.VarChar(16)
-  email        String   @unique
-  password     String
   firstName    String
   lastName     String?
+  email        String   @unique
+  password     String
   phone        String   @unique
+  gender       Gender
+  birthdate    DateTime
   role         Role     @default(CUSTOMER)
   createdAt    DateTime @default(now())
   lastModified DateTime @updatedAt
@@ -60,6 +62,11 @@ model Price {
 enum Role {
   ADMIN
   CUSTOMER
+}
+
+enum Gender {
+  MALE
+  FEMALE
 }
 
 enum Context {
