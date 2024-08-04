@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
@@ -32,7 +33,7 @@ const formSchema = z.object({
   phone: z.string().regex(/^\+62\d{8,12}$/),
   gender: z.enum(['FEMALE', 'MALE']),
   day: z.string().regex(/^\d{1,2}$/),
-  month: z.string().regex(/^(1[0-2]|[1-9])$/),
+  month: z.string().regex(/^(0[1-9]|1[0-2]|[1-9])$/),
   year: z.string().regex(/^\d{4}$/)
 })
   .refine(data => isValidDate(data.day, data.month, data.year), { path: ["day"] })
@@ -40,6 +41,8 @@ const formSchema = z.object({
 
 export default function Register() {
   const router = useRouter();
+
+  const [loading, setLoading] = useState<boolean>(false);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -57,7 +60,8 @@ export default function Register() {
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     const { day, month, year } = values;
-    const formattedDate = new Date(`${year}-${month}-${day}`);
+    const formattedDate = new Date(`${year}-${month.padStart(2, '0')}-${day}`);
+    console.log(formattedDate);
 
     const payload = {
       firstName: values.firstName,
@@ -68,8 +72,10 @@ export default function Register() {
       gender: values.gender,
       birthdate: formattedDate
     };
-    
+
     try {
+      setLoading(true);
+
       await fetch('/api/auth/register', {
         method: 'POST',
         headers: {
@@ -82,6 +88,8 @@ export default function Register() {
       router.push("/customer/login");
     } catch (error) {
       console.error(error);
+    } finally {
+      setLoading(false);
     };
   };
 
@@ -192,7 +200,6 @@ export default function Register() {
                   </FormItem>
                 )}
               />
-              {/* BIRTHDAY pake SHACDN POPOVER DATE PICKER */}
               <div className="flex gap-4">
                 <FormField
                   control={form.control}
@@ -232,7 +239,7 @@ export default function Register() {
                 />
               </div>
             </div>
-            <Button type="submit" className="w-full">Register</Button>
+            <Button type="submit" className="w-full">{loading ? 'Loading...' : 'Register'}</Button>
             <p className="text-sm text-center">Already have an account? <Link href='/customer/login' className="font-semibold hover:underline">Log in here</Link>.</p>
           </form>
         </div>

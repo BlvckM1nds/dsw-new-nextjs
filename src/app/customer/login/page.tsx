@@ -21,6 +21,7 @@ import Wrapper from "@/components/common/Wrapper";
 import logoDsw from "@/assets/logo-dsw.png";
 import bgLogin from "@/assets/gurame-bakar.png";
 import "../halfside.css";
+import { useState } from "react";
 
 const formSchema = z.object({
   email: z.string().email(),
@@ -29,6 +30,8 @@ const formSchema = z.object({
 
 export default function Login() {
   const router = useRouter();
+
+  const [loading, setLoading] = useState<boolean>(false);
   
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -40,6 +43,8 @@ export default function Login() {
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     try {
+      setLoading(true);
+      
       const response = await fetch('/api/auth/login', {
         method: 'POST',
         headers: {
@@ -55,6 +60,8 @@ export default function Login() {
       };
     } catch (error) {
       console.error(error);
+    } finally {
+      setLoading(false);
     };
   };
 
@@ -100,7 +107,7 @@ export default function Login() {
                 )}
               />
             </div>
-            <Button type="submit" className="w-full">Login</Button>
+            <Button type="submit" className="w-full">{loading ? 'Loading...' : 'Login'}</Button>
             <p className="text-sm text-center">Not a member? <Link href='/customer/register' className="font-semibold hover:underline">Sign up here</Link>.</p>
           </form>
         </div>
