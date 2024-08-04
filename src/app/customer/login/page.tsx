@@ -1,12 +1,11 @@
 "use client";
 
+import Link from "next/link";
+import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import Image from "next/image";
-import logoDsw from "@/assets/logo-dsw.png";
-import bgLogin from "@/assets/gurame-bakar.png";
-import "../halfside.css";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -18,7 +17,10 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import Wrapper from "@/components/common/Wrapper";
-import Link from "next/link";
+
+import logoDsw from "@/assets/logo-dsw.png";
+import bgLogin from "@/assets/gurame-bakar.png";
+import "../halfside.css";
 
 const formSchema = z.object({
   email: z.string().email(),
@@ -26,6 +28,8 @@ const formSchema = z.object({
 });
 
 export default function Login() {
+  const router = useRouter();
+  
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -35,7 +39,23 @@ export default function Login() {
   });
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
+    try {
+      const response = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(values)
+      });;
+      const { success } = await response.json();
+
+      if (success) {
+        router.push('/');
+      };
+    } catch (error) {
+      console.error(error);
+    };
   };
 
   return (
@@ -43,7 +63,7 @@ export default function Login() {
       {/* Login Form */}
       <Form {...form}>
         <div className="bg-custom flex-1 flex items-center justify-center">
-          <form onSubmit={form.handleSubmit(onSubmit)} className="min-w-60 max-w-[480px] min-h-96 max-h-[640px] overflow-y-scroll p-6 lg:p-10 mx-4 bg-white shadow-xl rounded-lg space-y-6 lg:space-y-8 border">
+          <form onSubmit={form.handleSubmit(onSubmit)} className="no-scrollbar min-w-60 max-w-[480px] min-h-96 max-h-[640px] overflow-y-scroll p-6 lg:p-10 mx-4 bg-white shadow-xl rounded-lg space-y-6 lg:space-y-8 border">
             <Image
               src={logoDsw}
               alt="Dapoer Sariwangi"

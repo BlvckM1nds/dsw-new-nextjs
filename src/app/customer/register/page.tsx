@@ -1,12 +1,12 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
-import { axiosInstance } from "@/utils/requester";
 import { isValidDate, maxValidYear } from "@/helper/validator";
 import { Button } from "@/components/ui/button";
 import {
@@ -39,6 +39,8 @@ const formSchema = z.object({
   .refine(data => maxValidYear(data.year), { path: ["year"] });
 
 export default function Register() {
+  const router = useRouter();
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -66,10 +68,21 @@ export default function Register() {
       gender: values.gender,
       birthdate: formattedDate
     };
-    console.log(payload);
     
-    const res = await axiosInstance.post("/api/auth/register", payload);
-    console.log(res);
+    try {
+      await fetch('/api/auth/register', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+      });
+
+      router.push("/customer/login");
+    } catch (error) {
+      console.error(error);
+    };
   };
 
   return (

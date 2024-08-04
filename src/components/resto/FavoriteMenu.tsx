@@ -1,8 +1,10 @@
+"use server";
+
 import Container from "../common/Container";
 import Wrapper from "../common/Wrapper";
 import MenuCarousel from "./MenuCarousel";
 
-export default function FavoriteMenu() {
+export default async function FavoriteMenu() {
   return (
     <Wrapper id="favorite" className="bg-light pb-20 lg:pb-28">
       <Container className="space-y-12 md:space-y-16 text-center">
