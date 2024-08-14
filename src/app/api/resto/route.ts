@@ -6,11 +6,14 @@ import { ResponseData } from "@/lib/interfaces";
 export async function GET(request: NextRequest): Promise<NextResponse> {
   try {
     const searchParams = request.nextUrl.searchParams;
-
+    const query = searchParams.getAll('category');
+    
     return NextResponse.json<ResponseData>({
       success: true,
       message: 'test',
-      data: searchParams
+      data: {
+        query
+      }
     }, { status: 200 });
   } catch (error) {
     return NextResponse.json<ResponseData>({
