@@ -1,19 +1,19 @@
 "use server";
 
-import { type NextRequest, NextResponse } from "next/server";
+import { encryptUtils } from "@/lib/encrypt";
 import { ResponseData } from "@/lib/interfaces";
-import { encryptUtils } from "@/utils/encrypt";
 import { userServices } from "@/services/user.service";
 import { User } from "@prisma/client";
+import { type NextRequest, NextResponse } from "next/server";
 
 // CREATE NEW USER
-export async function POST(request: NextRequest): Promise<NextResponse> {
+export async function POST(req: NextRequest): Promise<NextResponse> {
   try {
-    const { email, password } = await request.json();
+    const { email, password } = await req.json();
     if (!email || !password) {
       return NextResponse.json<ResponseData>({
         success: false,
-        message: 'Username or password must be provided'
+        message: 'Email or password must be provided'
       }, { status: 400 });
     };
 

@@ -1,14 +1,14 @@
 "use client";
 
-import { useState } from "react";
-import { useRouter } from "next/navigation";
-import Link from "next/link";
-import Image from "next/image";
 import { zodResolver } from "@hookform/resolvers/zod";
+import Image from "next/image";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
-import { isValidDate, maxValidYear } from "@/helper/validator";
+import Wrapper from "@/components/common/Wrapper";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -18,11 +18,12 @@ import {
   FormLabel
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import Wrapper from "@/components/common/Wrapper";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 
-import logoDsw from "@/assets/logo-dsw.png";
 import bgLogin from "@/assets/gurame-bakar.png";
+import logoDsw from "@/assets/logo-dsw.png";
+import { isValidDate, maxValidYear } from "@/helper/validator";
+import { authService } from "@/services/auth.service";
 import "../halfside.css";
 
 const formSchema = z.object({
@@ -61,7 +62,6 @@ export default function Register() {
   async function onSubmit(values: z.infer<typeof formSchema>) {
     const { day, month, year } = values;
     const formattedDate = new Date(`${year}-${month.padStart(2, '0')}-${day}`);
-    console.log(formattedDate);
 
     const payload = {
       firstName: values.firstName,
@@ -76,18 +76,13 @@ export default function Register() {
     try {
       setLoading(true);
 
-      await fetch('/api/auth/register', {
-        method: 'POST',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(payload)
-      });
+      const res = await authService.register(payload);
+      if (!res.data.success) throw new Error("Failed to register new user");
 
       router.push("/customer/login");
-    } catch (error) {
-      console.error(error);
+    } catch (error: any) {
+
+      console.error(error.response.data.message);
     } finally {
       setLoading(false);
     };
@@ -98,7 +93,10 @@ export default function Register() {
       {/* Register Form */}
       <Form {...form}>
         <div className="bg-custom flex-1 flex items-center justify-center">
-          <form onSubmit={form.handleSubmit(onSubmit)} className="no-scrollbar min-w-60 max-w-[480px] min-h-96 h-[640px] overflow-y-scroll p-6 lg:p-10 mx-4 bg-white shadow-xl rounded-lg space-y-6 lg:space-y-8 border">
+          <form
+            className="no-scrollbar min-w-60 max-w-[480px] min-h-96 h-[640px] overflow-y-scroll p-6 lg:p-10 mx-4 bg-white shadow-xl rounded-lg space-y-6 lg:space-y-8 border"
+            onSubmit={form.handleSubmit(onSubmit)}
+          >
             <Image
               src={logoDsw}
               alt="Dapoer Sariwangi"
@@ -240,7 +238,7 @@ export default function Register() {
               </div>
             </div>
             <Button type="submit" className="w-full">{loading ? 'Loading...' : 'Register'}</Button>
-            <p className="text-sm text-center">Already have an account? <Link href='/customer/login' className="font-semibold hover:underline">Log in here</Link>.</p>
+            <p className="text-sm text-center">Already have an account? <Link href='/customer/login' className="font-semibold text-primary hover:underline">Log in here</Link>.</p>
           </form>
         </div>
       </Form>

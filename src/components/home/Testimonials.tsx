@@ -1,7 +1,7 @@
-import Wrapper from "../common/Wrapper";
-import Container from "../common/Container";
-import TestimonialCarousel from "./TestimonialCarousel";
 import sampleImage from "../../assets/vegetables.jpg";
+import Container from "../common/Container";
+import Wrapper from "../common/Wrapper";
+import TestimonialCarousel from "./TestimonialCarousel";
 
 export default function Testimonials() {
   return (

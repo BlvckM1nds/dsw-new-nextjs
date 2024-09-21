@@ -59,6 +59,16 @@ model Price {
   @@map("prices")
 }
 
+model Reservation {
+  id       String   @id @db.VarChar(12)
+  fullName String
+  phone    String
+  date     DateTime
+  guests   Int
+
+  @@map("reservations")
+}
+
 enum Role {
   ADMIN
   CUSTOMER

@@ -1,7 +1,7 @@
 import { FaInstagram, FaLocationDot, FaWhatsapp } from "react-icons/fa6";
 
-import Wrapper from "../common/Wrapper";
 import Container from "../common/Container";
+import Wrapper from "../common/Wrapper";
 
 export default function Location() {
   return (

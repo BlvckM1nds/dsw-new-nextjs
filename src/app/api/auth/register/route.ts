@@ -1,15 +1,15 @@
 "use server";
 
-import { type NextRequest, NextResponse } from "next/server";
+import { encryptUtils } from "@/lib/encrypt";
 import { ResponseData } from "@/lib/interfaces";
-import { encryptUtils } from "@/utils/encrypt";
 import { userServices } from "@/services/user.service";
 import { User } from "@prisma/client";
+import { type NextRequest, NextResponse } from "next/server";
 
 // CREATE NEW USER
-export async function POST(request: NextRequest): Promise<NextResponse> {
+export async function POST(req: NextRequest): Promise<NextResponse> {
   try {
-    const body = await request.json();
+    const body = await req.json();
 
     const { password } = body;
     const hashedPassword = await encryptUtils.hashPassword(password);

@@ -2,15 +2,30 @@ import Link from "next/link";
 import { FaBowlFood } from "react-icons/fa6";
 
 import { Service } from "@/lib/interfaces";
-import Wrapper from "../common/Wrapper";
-import Container from "../common/Container";
-import { Button } from "../ui/button";
 import bgFavorite from "../../assets/cooks-bw.jpg";
+import Container from "../common/Container";
+import Wrapper from "../common/Wrapper";
+import { Button } from "../ui/button";
 
 const services: Service[] = [
-  { id: "dine-in", label: "Dine In", description: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolores possimus repudiandae, expedita tenetur labore recusandae?", icon: <FaBowlFood /> },
-  { id: "catering", label: "Catering", description: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolores possimus repudiandae, expedita tenetur labore recusandae?", icon: <FaBowlFood /> },
-  { id: "vip", label: "VIP Rooms", description: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolores possimus repudiandae, expedita tenetur labore recusandae?", icon: <FaBowlFood /> }
+  {
+    id: "dine-in",
+    label: "Dine In",
+    description: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolores possimus repudiandae, expedita tenetur labore recusandae?",
+    icon: <FaBowlFood />
+  },
+  {
+    id: "catering",
+    label: "Catering",
+    description: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolores possimus repudiandae, expedita tenetur labore recusandae?",
+    icon: <FaBowlFood />
+  },
+  {
+    id: "vip",
+    label: "VIP Rooms",
+    description: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolores possimus repudiandae, expedita tenetur labore recusandae?",
+    icon: <FaBowlFood />
+  }
 ];
 
 export default function Services() {

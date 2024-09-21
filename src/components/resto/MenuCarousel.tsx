@@ -1,11 +1,12 @@
 import Image from "next/image";
+
+import { currencyConversion } from "@/utils/formatter";
+import sampleImage from "../../assets/gurame-bakar.png";
 import {
   Carousel,
   CarouselContent,
   CarouselItem
 } from "../ui/carousel";
-import { currencyConversion } from "@/utils/formatter";
-import sampleImage from "../../assets/gurame-bakar.png";
 
 export default function MenuCarousel() {
   return (

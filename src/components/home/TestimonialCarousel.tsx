@@ -1,10 +1,11 @@
+import Image from "next/image";
+import { FaStar } from "react-icons/fa6";
+
 import {
   Carousel,
   CarouselContent,
   CarouselItem
 } from "../ui/carousel";
-import { FaStar } from "react-icons/fa6";
-import Image from "next/image";
 
 import sampleProfile from "@/assets/ryu-alvano.jpg";
 

@@ -1,9 +1,9 @@
-import Link from "next/link";
 import { Great_Vibes } from "next/font/google";
+import Link from "next/link";
 
+import bgJumbo from "../../assets/vegetables.jpg";
 import Wrapper from "../common/Wrapper";
 import { Button } from "../ui/button";
-import bgJumbo from "../../assets/vegetables.jpg";
 
 const greatVibes = Great_Vibes({
   weight: ["400"],

@@ -10,7 +10,7 @@ export default function Header({ scrolled, menuList }: { scrolled: boolean, menu
         {menuList?.map(({ id, path }: Hyperlink) => (
           <li
             key={id}
-            className={`uppercase font-semibold hover:text-secondary hover:-translate-y-0.5 transition-all duration-300 ${path === "?" && "text-secondary"}`}
+            className={`uppercase font-semibold hover:text-accent hover:-translate-y-0.5 transition-all duration-300 ${path === "?" && "text-accent"}`}
           >
             <Link href={path}>
               {id}

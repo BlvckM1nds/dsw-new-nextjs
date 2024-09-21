@@ -1,7 +1,7 @@
 import Link from "next/link";
-import Wrapper from "../common/Wrapper";
-import Container from "../common/Container";
 import imgSample from "../../assets/cooks-bw.jpg";
+import Container from "../common/Container";
+import Wrapper from "../common/Wrapper";
 
 export default function Categories() {
   return (

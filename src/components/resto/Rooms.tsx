@@ -1,14 +1,14 @@
 "use client";
 
-import { useState } from "react";
 import Image from "next/image";
+import { useState } from "react";
 
-import { currencyConversion } from "@/utils/formatter";
 import { VIPRoom } from "@/lib/interfaces";
-import Wrapper from "../common/Wrapper";
-import Container from "../common/Container";
-import { Button } from "../ui/button";
+import { currencyConversion } from "@/utils/formatter";
 import sampleImg from "../../assets/gurame-bakar.png";
+import Container from "../common/Container";
+import Wrapper from "../common/Wrapper";
+import { Button } from "../ui/button";
 
 const roomsData: VIPRoom[] = [
   {

@@ -4,12 +4,12 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { BsClock } from "react-icons/bs";
 
-import { Carousel, CarouselContent, CarouselItem, type CarouselApi } from "../ui/carousel";
-import { formatLongDate } from "@/utils/formatter";
 import { Promo } from "@/lib/interfaces";
+import { formatLongDate } from "@/utils/formatter";
+import sampleBg from "../../assets/cooks-bw.jpg";
 import Wrapper from "../common/Wrapper";
 import { Button } from "../ui/button";
-import sampleBg from "../../assets/cooks-bw.jpg";
+import { Carousel, CarouselContent, CarouselItem, type CarouselApi } from "../ui/carousel";
 
 const promoData: Promo[] = [
   {

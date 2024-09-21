@@ -1,12 +1,14 @@
 "use client";
 
-import Link from "next/link";
-import Image from "next/image";
-import { useRouter } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
+import Image from "next/image";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
+import Wrapper from "@/components/common/Wrapper";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -16,12 +18,12 @@ import {
   FormLabel
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import Wrapper from "@/components/common/Wrapper";
+import { useToast } from "@/hooks/use-toast";
 
-import logoDsw from "@/assets/logo-dsw.png";
 import bgLogin from "@/assets/gurame-bakar.png";
+import logoDsw from "@/assets/logo-dsw.png";
+import { authService } from "@/services/auth.service";
 import "../halfside.css";
-import { useState } from "react";
 
 const formSchema = z.object({
   email: z.string().email(),
@@ -32,7 +34,7 @@ export default function Login() {
   const router = useRouter();
 
   const [loading, setLoading] = useState<boolean>(false);
-  
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -41,23 +43,20 @@ export default function Login() {
     }
   });
 
+  const { toast } = useToast();
+
   async function onSubmit(values: z.infer<typeof formSchema>) {
     try {
       setLoading(true);
-      
-      const response = await fetch('/api/auth/login', {
-        method: 'POST',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(values)
-      });;
-      const { success } = await response.json();
 
-      if (success) {
-        router.push('/');
-      };
+      const res = await authService.login(values);
+      if (!res.data.success) throw new Error("Login failed");
+
+      toast({
+        description: res.data.message
+      });
+      
+      router.push("/");
     } catch (error) {
       console.error(error);
     } finally {
@@ -107,8 +106,13 @@ export default function Login() {
                 )}
               />
             </div>
-            <Button type="submit" className="w-full">{loading ? 'Loading...' : 'Login'}</Button>
-            <p className="text-sm text-center">Not a member? <Link href='/customer/register' className="font-semibold hover:underline">Sign up here</Link>.</p>
+            <Button
+              className="w-full"
+              type="submit"
+            >
+              {loading ? 'Loading...' : 'Login'}
+            </Button>
+            <p className="text-sm text-center">Not a member? <Link href="/customer/register" className="font-semibold text-primary hover:underline">Sign up here</Link>.</p>
           </form>
         </div>
       </Form>
