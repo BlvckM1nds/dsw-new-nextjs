@@ -22,7 +22,7 @@ import { useToast } from "@/hooks/use-toast";
 
 import bgLogin from "@/assets/gurame-bakar.png";
 import logoDsw from "@/assets/logo-dsw.png";
-import { authService } from "@/services/auth.service";
+import { authService } from "@/services/auth";
 import "../halfside.css";
 
 const formSchema = z.object({

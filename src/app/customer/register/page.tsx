@@ -1,6 +1,7 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
+import dayjs from "dayjs";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -23,7 +24,7 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import bgLogin from "@/assets/gurame-bakar.png";
 import logoDsw from "@/assets/logo-dsw.png";
 import { isValidDate, maxValidYear } from "@/helper/validator";
-import { authService } from "@/services/auth.service";
+import { authService } from "@/services/auth";
 import "../halfside.css";
 
 const formSchema = z.object({
@@ -61,7 +62,7 @@ export default function Register() {
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     const { day, month, year } = values;
-    const formattedDate = new Date(`${year}-${month.padStart(2, '0')}-${day}`);
+    const formattedDate = dayjs(`${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`).toDate();
 
     const payload = {
       firstName: values.firstName,
@@ -72,6 +73,7 @@ export default function Register() {
       gender: values.gender,
       birthdate: formattedDate
     };
+    console.log(payload);
 
     try {
       setLoading(true);
