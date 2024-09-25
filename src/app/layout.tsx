@@ -1,3 +1,4 @@
+import WhatsappFloatButton from "@/components/common/WhatsappFloatButton";
 import { Toaster } from "@/components/ui/toaster";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
@@ -20,6 +21,7 @@ export default function RootLayout({
       <body className={inter.className}>
         {children}
         <Toaster />
+        <WhatsappFloatButton />
       </body>
     </html>
   );

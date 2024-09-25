@@ -1,16 +1,16 @@
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
 import { Fragment } from "react";
 import { RiMenu3Fill } from "react-icons/ri";
 
+import { Hyperlink } from "@/lib/interfaces";
+import logoDapoerSariwangi from "../../assets/logo-dsw.png";
 import {
   Sheet,
   SheetContent,
-  SheetTrigger,
-  SheetHeader
+  SheetHeader,
+  SheetTrigger
 } from "../ui/sheet";
-import { Hyperlink } from "@/lib/interfaces";
-import logoDapoerSariwangi from "../../assets/logo-dsw.png";
 
 export default function Sidebar({ scrolled, menuList }: { scrolled: boolean, menuList: Hyperlink[] }) {
   return (

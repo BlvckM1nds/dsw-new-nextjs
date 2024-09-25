@@ -1,22 +1,14 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
+import { useEffect, useState } from "react";
 
 import { Button } from "@/components/ui/button";
-import { Hyperlink } from "@/lib/interfaces";
+import { links } from "@/lib/paths";
+import logoDapoerSariwangi from "../../assets/logo-dsw.png";
 import Header from "./Header";
 import Sidebar from "./Sidebar";
-import logoDapoerSariwangi from "../../assets/logo-dsw.png";
-
-const links: Hyperlink[] = [
-  { id: "home", path: "/" },
-  { id: "resto", path: "/resto" },
-  { id: "catering", path: "/catering" },
-  { id: "about", path: "/about" },
-  { id: "contact", path: "/contact" },
-];
 
 export default function Navigations() {
   const [scrolled, setScrolled] = useState<boolean>(false);

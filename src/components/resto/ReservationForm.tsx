@@ -6,12 +6,14 @@ import { Input } from "@/components/ui/input";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select";
 
 const formSchema = z.object({
   fullName: z.string(),
   phone: z.string().regex(/^\+62\d{8,12}$/),
   date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
   time: z.string().regex(/^\d{2}:\d{2}$/),
+  room: z.string(),
   guests: z.coerce.number().min(1)
 });
 
@@ -23,6 +25,7 @@ export default function ReservationForm() {
       phone: "",
       date: "",
       time: "",
+      room: "",
       guests: 1
     }
   });
@@ -42,7 +45,7 @@ export default function ReservationForm() {
       </h2>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 md:space-y-6">
-          <div className="flex flex-col md:flex-row gap-y-4 gap-x-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             <FormField
               control={form.control}
               name="fullName"
@@ -72,7 +75,7 @@ export default function ReservationForm() {
               name="date"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Reservation Date</FormLabel>
+                  <FormLabel>Date</FormLabel>
                   <FormControl>
                     <Input required {...field} type="date" />
                   </FormControl>
@@ -84,10 +87,31 @@ export default function ReservationForm() {
               name="time"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Reservation Time</FormLabel>
+                  <FormLabel>Time</FormLabel>
                   <FormControl>
                     <Input required {...field} type="time" />
                   </FormControl>
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="room"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Room</FormLabel>
+                  <Select onValueChange={field.onChange} defaultValue={field.value}>
+                    <FormControl>
+                      <SelectTrigger>
+                        <SelectValue placeholder="Select room type" />
+                      </SelectTrigger>
+                    </FormControl>
+                    <SelectContent>
+                      <SelectItem value="vip">VIP</SelectItem>
+                      <SelectItem value="regular">Regular</SelectItem>
+                      <SelectItem value="smoking">Smoking Area</SelectItem>
+                    </SelectContent>
+                  </Select>
                 </FormItem>
               )}
             />
@@ -98,7 +122,7 @@ export default function ReservationForm() {
                 <FormItem>
                   <FormLabel>Guests</FormLabel>
                   <FormControl>
-                    <Input required {...field} type="number" min="1" />
+                    <Input required {...field} min="1" />
                   </FormControl>
                 </FormItem>
               )}

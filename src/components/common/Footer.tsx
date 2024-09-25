@@ -1,9 +1,10 @@
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
 import { FaClock, FaInstagram, FaMapPin, FaWhatsapp } from "react-icons/fa";
 import { MdMenuBook } from "react-icons/md";
 
 import { Hyperlink, SocialMedia } from "@/lib/interfaces";
+import { links } from "@/lib/paths";
 import logoDapoerSariwangi from "../../assets/logo-dsw.png";
 
 const socialMedia: SocialMedia[] = [
@@ -24,14 +25,6 @@ const socialMedia: SocialMedia[] = [
   }
 ];
 
-const links: Hyperlink[] = [
-  { id: "home", path: "/" },
-  { id: "resto", path: "/resto" },
-  { id: "catering", path: "/catering" },
-  { id: "about", path: "/about" },
-  { id: "contact", path: "/contact" },
-];
-
 export default function Footer() {
   return (
     <footer className="pt-12 pb-8 bg-gray-50">
@@ -49,7 +42,15 @@ export default function Footer() {
               <h3 className="font-semibold text-lg text-primary">PT Dapoer Sariwangi</h3>
               <div className="socials flex gap-2">
                 {socialMedia.map((social: SocialMedia) => (
-                  <a key={social.id} href={social.path} target="_blank" rel="noopener noreferrer" className={`w-8 aspect-square rounded-full border border-accent text-accent flex justify-center items-center duration-200 hover:bg-accent hover:text-white text-lg`}>{social.icon}</a>
+                  <a
+                    key={social.id}
+                    href={social.path}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`w-8 aspect-square rounded-full border border-accent text-accent flex justify-center items-center duration-200 hover:bg-accent hover:text-white text-lg`}
+                  >
+                    {social.icon}
+                  </a>
                 ))}
               </div>
             </div>

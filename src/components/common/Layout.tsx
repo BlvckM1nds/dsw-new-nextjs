@@ -1,6 +1,6 @@
 import { Fragment, ReactNode } from "react";
-import Navigations from "./Navigations";
 import Footer from "./Footer";
+import Navigations from "./Navigations";
 
 export default function Layout({ children }: { children: ReactNode }) {
   return (
