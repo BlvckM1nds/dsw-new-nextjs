@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Fragment } from "react";
 import { RiMenu3Fill } from "react-icons/ri";
 
@@ -13,6 +14,8 @@ import {
 } from "../ui/sheet";
 
 export default function Sidebar({ scrolled, menuList }: { scrolled: boolean, menuList: Hyperlink[] }) {
+  const currentPath = usePathname();
+  
   return (
     <Fragment>
       <Sheet>
@@ -33,7 +36,7 @@ export default function Sidebar({ scrolled, menuList }: { scrolled: boolean, men
             {menuList?.map(({ id, path }: Hyperlink) => (
               <li
                 key={id}
-                className={`uppercase font-semibold hover:text-secondary transition-all duration-300 ${path === "?" && "text-secondary"}`}
+                className={`uppercase font-semibold hover:text-accent transition-all duration-300 ${path === currentPath && "border-b-2 border-accent"}`}
               >
                 <Link href={path}>{id}</Link>
               </li>
