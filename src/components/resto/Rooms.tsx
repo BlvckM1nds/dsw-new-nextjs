@@ -42,8 +42,7 @@ export default function Rooms() {
           <em className="text-sm text-primary">*S&k berlaku</em>
         </div>
 
-        {/* Room Cards: DESKTOP */}
-        <div className="hidden lg:flex lg:gap-x-2.5">
+        <div aria-label="desktop" className="hidden lg:flex lg:gap-x-2.5">
           {roomsData.map((room, index) => (
             <div
               key={`vip-${index}`}
@@ -59,8 +58,7 @@ export default function Rooms() {
               </figure>
               <div className={`p-6 xl:p-10 w-full duration-500 ${hoverIndex === index ? "opacity-100 delay-500" : "opacity-0"}`}>
                 <h3 className="text-2xl xl:text-3xl text-primary font-bold mb-2 xl:mb-3">{room.title}</h3>
-                {/* S & K */}
-                <div className="mb-6">
+                <div aria-label="s&k" className="mb-6">
                   <h5 className="text-lg xl:text-xl text-primary font-semibold mb-2">Syarat dan Ketentuan</h5>
                   <ul>
                     <li className="flex items-center gap-2.5 text-sm xl:text-base">
@@ -81,8 +79,10 @@ export default function Rooms() {
           ))}
         </div>
 
-        {/* Room Cards: MOBILE */}
-        <div className="grid grid-cols-1 lg:hidden gap-8">
+        <div
+          aria-label="mobile"
+          className="grid grid-cols-1 lg:hidden gap-8"
+        >
           {roomsData.map((room, index) => (
             <div
               key={`vip-${index}`}

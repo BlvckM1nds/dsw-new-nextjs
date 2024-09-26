@@ -49,11 +49,16 @@ export default function Promotions() {
   }, [api]);
 
   return (
-    <Wrapper id="promotions" className="bg-cover bg-center py-16 lg:py-24" style={{ backgroundImage: `url(${sampleBg.src})` }}>
+    <Wrapper
+      id="promotions"
+      className="bg-cover bg-center py-16 lg:py-24"
+      style={{ backgroundImage: `url(${sampleBg.src})` }}
+    >
       <h2 className="mb-8 md:mb-12 font-rabona font-bold text-white text-center text-3xl lg:text-4xl">Promo Kami</h2>
       <div className="max-w-4xl mx-auto flex flex-col md:bg-white md:rounded-lg md:overflow-hidden md:flex-row md:items-center group">
-        {/* Information */}
-        <div className="p-5 text-center order-2 space-y-4 md:order-1 md:text-left md:basis-1/2 md:max-w-1/2 md:p-10 md:space-y-4">
+        <div
+          className="p-5 text-center order-2 space-y-4 md:order-1 md:text-left md:basis-1/2 md:max-w-1/2 md:p-10 md:space-y-4"
+        >
           <h2 className="text-white md:text-accent text-xl md:text-2xl font-bold">{promos[currentIndex]?.title}</h2>
           <p className="text-sm md:text-base text-white/60 md:text-primary/60 line-clamp-3">{promos[currentIndex]?.description}</p>
           <div>

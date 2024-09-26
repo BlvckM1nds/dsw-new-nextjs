@@ -11,9 +11,7 @@ import {
 export default function MenuCarousel() {
   return (
     <Carousel
-      opts={{
-        loop: true
-      }}
+      opts={{ loop: true }}
       className="container"
     >
       <CarouselContent>
@@ -32,7 +30,9 @@ export default function MenuCarousel() {
               </div>
               <div className="space-y-3 p-5">
                 <h3 className="font-rabona tracking-wide text-2xl font-bold text-primary">Gurame Bakar</h3>
-                <p className="text-sm text-primary/60">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, excepturi. Aperiam nam fugiat doloremque at?</p>
+                <p className="text-sm text-primary/60">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, excepturi. Aperiam nam fugiat doloremque at?
+                </p>
                 <p className="text-2xl text-accent font-bold">
                   {currencyConversion("id-ID", 'IDR', 150000)}
                 </p>

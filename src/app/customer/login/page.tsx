@@ -3,7 +3,6 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -23,6 +22,7 @@ import { useToast } from "@/hooks/use-toast";
 import bgLogin from "@/assets/gurame-bakar.png";
 import logoDsw from "@/assets/logo-dsw.png";
 import { authService } from "@/services/auth";
+import { setToken } from "@/utils/token";
 import "../halfside.css";
 
 const formSchema = z.object({
@@ -31,8 +31,6 @@ const formSchema = z.object({
 });
 
 export default function Login() {
-  const router = useRouter();
-
   const [loading, setLoading] = useState<boolean>(false);
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -52,11 +50,14 @@ export default function Login() {
       const res = await authService.login(values);
       if (!res.data.success) throw new Error("Login failed");
 
+      const { token } = res.data.data;
+      setToken(token);
+
       toast({
         description: res.data.message
       });
-      
-      router.push("/");
+
+      window.location.href = "/";
     } catch (error) {
       console.error(error);
     } finally {

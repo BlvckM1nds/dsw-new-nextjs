@@ -1,4 +1,5 @@
-import axios, { AxiosResponse } from "axios";
+import { axiosInstance } from "@/utils/requester";
+import { AxiosResponse } from "axios";
 
 class AuthService {
   async register(values: {
@@ -11,7 +12,7 @@ class AuthService {
     birthdate: Date
   }): Promise<AxiosResponse> {
     try {
-      const res = await axios.post('http://localhost:8080/api/v1/auth/register', values, {
+      const res = await axiosInstance.post('/auth/register', values, {
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json'
@@ -26,7 +27,7 @@ class AuthService {
 
   async login(values: { email: string, password: string }): Promise<AxiosResponse> {
     try {
-      const res = await axios.post('http://localhost:8080/api/v1/auth/login', values, {
+      const res = await axiosInstance.post('/auth/login', values, {
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json'

@@ -35,13 +35,13 @@ export default function Navigations() {
             className="h-full w-fit"
           />
         </Link>
-        {/* Desktop Profile */}
+
         <Header scrolled={scrolled} menuList={links} />
-        {/* Mobile Navbar */}
+
         <div className="lg:hidden ml-auto">
           <Sidebar scrolled={scrolled} menuList={links} />
         </div>
-        {/* Find us button */}
+        
         <Button className="hidden lg:block justify-end">Find Us</Button>
       </nav>
     </header>

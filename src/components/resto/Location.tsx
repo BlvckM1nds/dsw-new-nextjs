@@ -10,8 +10,7 @@ export default function Location() {
         <h2 className="font-rabona font-bold text-accent text-4xl lg:text-5xl text-center">Alamat Resto</h2>
         <div className="flex flex-col lg:flex-row items-center gap-8">
           <div className="lg:basis-2/5 space-y-6">
-            {/* Loc & Contact */}
-            <div>
+            <div className="location-contact">
               <h4 className="text-center lg:text-left text-2xl text-primary font-semibold mb-3">Temukan kami di</h4>
               <ul className="flex flex-col gap-2.5 text-primary/75">
                 <li className="flex items-center gap-2.5">
@@ -29,8 +28,7 @@ export default function Location() {
               </ul>
             </div>
 
-            {/* Jam Buka */}
-            <div>
+            <div className="opening-hours">
               <h4 className="text-center lg:text-left text-2xl text-primary font-semibold mb-3">Jam operasional</h4>
               <ul className="lg:w-2/3 flex flex-col gap-2.5 text-primary/75">
                 <li className="flex items-center justify-between gap-2.5">

@@ -14,12 +14,11 @@ export default function Header({ scrolled, menuList }: { scrolled: boolean, menu
       <ul className={`hidden lg:flex ${scrolled ? "text-primary" : "text-white group-hover:text-primary"} tracking-wider gap-12`}>
         {menuList?.map(({ id, path }: Hyperlink) => {
           const isActive = path === currentPath;
-          const borderColor = scrolled ? "accent" : "secondary";
 
           return (
             <li
               key={id}
-              className={`uppercase font-semibold hover:text-accent transition-all duration-300 ${isActive ? `border-b-2 border-${borderColor}` : ""}`}
+              className={`uppercase font-semibold hover:text-accent transition-all duration-300 ${isActive && `border-b-2 border-secondary`}`}
             >
               <Link href={path}>
                 {id}
