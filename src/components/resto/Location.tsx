@@ -9,10 +9,12 @@ export default function Location() {
       <Container className="space-y-12 md:space-y-16">
         <h2 className="font-rabona font-bold text-accent text-4xl lg:text-5xl text-center">Alamat Resto</h2>
         <div className="flex flex-col lg:flex-row items-center gap-8">
-          <div className="lg:basis-2/5 space-y-6">
+          <div className="lg:basis-2/5 space-y-6 w-full sm:w-3/4">
             <div className="location-contact">
-              <h4 className="text-center lg:text-left text-2xl text-primary font-semibold mb-3">Temukan kami di</h4>
-              <ul className="flex flex-col gap-2.5 text-primary/75">
+              <h4 className="text-center lg:text-left text-xl lg:text-2xl text-primary font-semibold mb-3">
+                Temukan kami di
+              </h4>
+              <ul className="flex flex-col gap-2.5 text-primary/75  text-sm lg:text-base">
                 <li className="flex items-center gap-2.5">
                   <FaLocationDot className="text-2xl" />
                   Sunter Jaya, Jakarta Utara, DKI Jakarta
@@ -28,9 +30,13 @@ export default function Location() {
               </ul>
             </div>
 
+            <div className="hidden lg:block">&nbsp;</div>
+
             <div className="opening-hours">
-              <h4 className="text-center lg:text-left text-2xl text-primary font-semibold mb-3">Jam operasional</h4>
-              <ul className="lg:w-2/3 flex flex-col gap-2.5 text-primary/75">
+              <h4 className="text-center lg:text-left text-xl lg:text-2xl text-primary font-semibold mb-3">
+                Jam operasional
+              </h4>
+              <ul className="lg:w-2/3 flex flex-col gap-2.5 text-primary/75 text-sm lg:text-base">
                 <li className="flex items-center justify-between gap-2.5">
                   <span>Senin - Jumat</span>
                   <span>10:00 - 22:00</span>

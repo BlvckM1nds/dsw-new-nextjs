@@ -41,8 +41,13 @@ export default function Navigations() {
         <div className="lg:hidden ml-auto">
           <Sidebar scrolled={scrolled} menuList={links} />
         </div>
-        
-        <Button className="hidden lg:block justify-end">Find Us</Button>
+
+        <Button
+          className="hidden lg:block justify-end"
+          onClick={() => console.log(process.env.NEXT_PUBLIC_ENV)}
+        >
+          Find Us
+        </Button>
       </nav>
     </header>
   );
