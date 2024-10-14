@@ -1,7 +1,6 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import dayjs from "dayjs";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -62,7 +61,7 @@ export default function Register() {
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     const { day, month, year } = values;
-    const formattedDate = dayjs(`${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`).toDate();
+    const formattedDate = new Date(`${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`);
 
     const payload = {
       firstName: values.firstName,
@@ -83,7 +82,6 @@ export default function Register() {
 
       router.push("/customer/login");
     } catch (error: any) {
-
       console.error(error.response.data.message);
     } finally {
       setLoading(false);
